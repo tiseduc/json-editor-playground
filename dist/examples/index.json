@@ -1,5 +1,14 @@
 [
   {
+    "group": "SEDUC",
+    "items": [
+      {
+        "title": "Censo Previdenciário",
+        "file": "seduc-censo-previdenciario"
+      }
+    ]
+  },
+  {
     "group": "General Examples",
     "items": [
       {
