@@ -1,0 +1,402 @@
+{
+  "title": "JSON-Form - Censo Previdenciário",
+  "schema": {
+    "type": "object",
+    "title": "Declarações",
+    "format": "grid",
+    "properties": {
+      "servidor": {
+        "type": "object",
+        "title": "Servidor(a)",
+        "format": "grid",
+        "properties": {
+          "nome": {
+            "title": "Nome",
+            "type": "string",
+            "options": {
+              "compact": false,
+              "grid_columns": 12,
+              "inputAttributes": {
+                "placeholder": "Digite o nome"
+              }
+            }
+          },
+          "cpf": {
+            "title": "CPF",
+            "type": "string",
+            "options": {
+              "compact": false,
+              "grid_columns": 4,
+              "inputAttributes": {
+                "placeholder": "Digite o CPF"
+              }
+            }
+          },
+          "rg_numero": {
+            "title": "Número do RG",
+            "type": "string",
+            "options": {
+              "grid_columns": 6
+            }
+          },
+          "rg_emissor": {
+            "title": "Orgão Emissor do RG",
+            "type": "string",
+            "options": {
+              "grid_columns": 6
+            }
+          },
+          "matricula": {
+            "title": "Matrícula",
+            "type": "string",
+            "options": {
+              "grid_columns": 3
+            }
+          },
+          "lotacao": {
+            "title": "Lotação",
+            "type": "string",
+            "options": {
+              "grid_columns": 9
+            }
+          },
+          "vinculo_ativo": {
+            "type": "string",
+            "title": "Situação do(a) servidor(a)",
+            "options": {
+              "grid_columns": 6
+            },
+            "enumSource": [
+              {
+                "source": [
+                  {
+                    "value": "1",
+                    "label": "Ativo"
+                  },
+                  {
+                    "value": "0",
+                    "label": "Inativo"
+                  }
+                ],
+                "title": "{{item.label}}",
+                "value": "{{item.value}}"
+              }
+            ]
+          },
+          "acumula_cargo_publico": {
+            "type": "string",
+            "title": "Acúmulo de cargo público",
+            "options": {
+              "grid_columns": 6
+            },
+            "enumSource": [
+              {
+                "source": [
+                  {
+                    "value": "",
+                    "label": "Escolha uma opção..."
+                  },
+                  {
+                    "value": "0",
+                    "label": "não acumulo ilegalmente cargo público"
+                  },
+                  {
+                    "value": "1",
+                    "label": "acumulo legalmente cargo público"
+                  }
+                ],
+                "title": "{{item.label}}",
+                "value": "{{item.value}}"
+              }
+            ]
+          }
+        }
+      },
+      "escolaridade": {
+        "type": "object",
+        "title": "Escolaridade",
+        "format": "grid",
+        "properties": {
+          "comprovacao": {
+            "type": "string",
+            "title": "Comprovação da escolaridade",
+            "options": {
+              "grid_columns": 6
+            },
+            "enumSource": [
+              {
+                "source": [
+                  {
+                    "value": "",
+                    "label": "Escolha uma opção..."
+                  },
+                  {
+                    "value": "1",
+                    "label": "Consigo comprovar"
+                  },
+                  {
+                    "value": "2",
+                    "label": "NÃO consigo comprovar"
+                  }
+                ],
+                "title": "{{item.label}}",
+                "value": "{{item.value}}"
+              }
+            ]
+          },
+          "escolaridade": {
+            "type": "string",
+            "title": "Escolaridade",
+            "options": {
+              "grid_columns": 6,
+              "dependencies": {
+                "comprovacao": [
+                  "2"
+                ]
+              }
+            },
+            "enumSource": [
+              {
+                "source": [
+                  {
+                    "value": "",
+                    "label": "Escolha uma opção..."
+                  },
+                  {
+                    "value": "1",
+                    "label": "Analfabeto(a)"
+                  },
+                  {
+                    "value": "2",
+                    "label": "Alfabetizado(a) com cursos regulares"
+                  },
+                  {
+                    "value": "3",
+                    "label": "Fundamental incompleto"
+                  },
+                  {
+                    "value": "4",
+                    "label": "Fundamental completo"
+                  }
+                ],
+                "title": "{{item.label}}",
+                "value": "{{item.value}}"
+              }
+            ]
+          },
+          "serie": {
+            "type": "string",
+            "title": "Estudou até",
+            "options": {
+              "grid_columns": 6,
+              "dependencies": {
+                "escolaridade": [
+                  "3",
+                  "4"
+                ]
+              }
+            },
+            "enum": [
+              "1ª série / 2º ano",
+              "2ª série / 3º ano",
+              "3ª série / 4º ano",
+              "4ª série / 5º ano",
+              "5ª série / 6º ano",
+              "6ª série / 7º ano",
+              "7ª série / 8º ano",
+              "8ª série / 9º ano"
+            ]
+          }
+        }
+      },
+      "estado_civil": {
+        "title": "Estado Civil",
+        "type": "object",
+        "format": "grid",
+        "properties": {
+          "estado_civil": {
+            "title": "Estado civil",
+            "type": "string",
+            "options": {
+              "grid_columns": 6
+            },
+            "enumSource": [
+              {
+                "source": [
+                  {
+                    "value": "",
+                    "label": "Escolha uma opção..."
+                  },
+                  {
+                    "value": "1",
+                    "label": "Solteiro(a)"
+                  },
+                  {
+                    "value": "2",
+                    "label": "Casado(a)"
+                  },
+                  {
+                    "value": "3",
+                    "label": "Divorciado(a)"
+                  },
+                  {
+                    "value": "4",
+                    "label": "Separado(a)"
+                  },
+                  {
+                    "value": "5",
+                    "label": "União Estável"
+                  }
+                ],
+                "title": "{{item.label}}",
+                "value": "{{item.value}}"
+              }
+            ]
+          },
+          "separados_desde": {
+            "type": "string",
+            "format": "date",
+            "title": "Separado(a) do(a) conjuge desde",
+            "options": {
+              "grid_columns": 3,
+              "dependencies": {
+                "estado_civil": [
+                  "4"
+                ]
+              }
+            }
+          },
+          "juntos_desde": {
+            "type": "string",
+            "format": "date",
+            "title": "Convive juntos desde",
+            "options": {
+              "grid_columns": 3,
+              "dependencies": {
+                "estado_civil": [
+                  "5"
+                ]
+              }
+            }
+          },
+          "nome": {
+            "title": "Nome do(a) conjuge",
+            "type": "string",
+            "minLength": 5,
+            "options": {
+              "grid_columns": 5,
+              "dependencies": {
+                "estado_civil": [
+                  "4",
+                  "5"
+                ]
+              }
+            }
+          },
+          "nascimento": {
+            "type": "string",
+            "format": "date",
+            "title": "Nascimento do(a) conjuge",
+            "options": {
+              "grid_columns": 3,
+              "dependencies": {
+                "estado_civil": [
+                  "4"
+                ]
+              }
+            }
+          },
+          "naturalidade": {
+            "title": "Naturalidade",
+            "type": "string",
+            "options": {
+              "grid_columns": 3,
+              "dependencies": {
+                "estado_civil": [
+                  "5"
+                ]
+              }
+            }
+          },
+          "cpf": {
+            "title": "CPF",
+            "type": "string",
+            "options": {
+              "grid_columns": 3,
+              "dependencies": {
+                "estado_civil": [
+                  "5"
+                ]
+              }
+            }
+          },
+          "rg_numero": {
+            "title": "Número do RG",
+            "type": "string",
+            "options": {
+              "grid_columns": 3,
+              "dependencies": {
+                "estado_civil": [
+                  "5"
+                ]
+              }
+            }
+          },
+          "rg_emissor": {
+            "title": "Orgão Emissor do RG",
+            "type": "string",
+            "options": {
+              "grid_columns": 3,
+              "dependencies": {
+                "estado_civil": [
+                  "5"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "startval": {},
+  "config": {
+    "theme": "bootstrap4",
+    "iconlib": "fontawesome3",
+    "object_layout": "normal",
+    "template": "default",
+    "show_errors": "interaction",
+    "required_by_default": 1,
+    "no_additional_properties": 0,
+    "display_required_only": 0,
+    "keep_oneof_values": 1,
+    "ajax": 0,
+    "ajaxCredentials": 0,
+    "show_opt_in": 0,
+    "disable_edit_json": 1,
+    "disable_collapse": 1,
+    "disable_properties": 1,
+    "disable_array_add": 0,
+    "disable_array_reorder": 0,
+    "disable_array_delete": 0,
+    "enable_array_copy": 0,
+    "array_controls_top": 0,
+    "disable_array_delete_all_rows": 0,
+    "disable_array_delete_last_row": 0,
+    "prompt_before_delete": 1,
+    "lib_aceeditor": 0,
+    "lib_sceditor": 0,
+    "lib_simplemde": 0,
+    "lib_select2": 0,
+    "lib_selectize": 0,
+    "lib_choices": 0,
+    "lib_flatpickr": 0,
+    "lib_signaturepad": 0,
+    "lib_mathjs": 0,
+    "lib_cleavejs": 0,
+    "lib_jquery": 0,
+    "lib_dompurify": 1
+  },
+  "code": "// The following lines are mandatory and readonly. You can add custom code above and below.\nif (jseditor instanceof window.JSONEditor) jseditor.destroy();\njseditor = new window.JSONEditor(document.querySelector(\"#json-editor-form\"), jedata);",
+  "style": "h3{\n  font-size: 1rem;\n}\ndiv[data-schemaid=\"root\"]>h3 {\n  /*font-size: 2rem;*/\n  display:none;\n}\ndiv[data-schemaid=\"root\"]>div.card {\n  background: initial !important;\n  border: initial;\n}\ndiv[data-schemaid=\"root\"]>div.card>div>div>div.row>div[data-schematype=\"object\"]>h3 {\n  font-size: 1.5rem;\n}\ndiv[data-schemaid=\"root\"]>div.card>div>div>div.row:not(:first-child)>div[data-schematype=\"object\"] {\n  margin-top: 3rem;\n}",
+  "desc": "Formulário para o Censo Previdênciário de Feira de Santana"
+}
