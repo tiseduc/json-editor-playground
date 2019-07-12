@@ -29,6 +29,20 @@
               "grid_columns": 4,
               "inputAttributes": {
                 "placeholder": "Digite o CPF"
+              },
+              "cleave": {
+                "delimiters": [
+                  ".",
+                  ".",
+                  "-"
+                ],
+                "blocks": [
+                  3,
+                  3,
+                  3,
+                  2
+                ],
+                "numericOnly": true
               }
             }
           },
@@ -50,7 +64,10 @@
             "title": "Matrícula",
             "type": "string",
             "options": {
-              "grid_columns": 3
+              "grid_columns": 3,
+              "cleave": {
+                "numericOnly": true
+              }
             }
           },
           "lotacao": {
@@ -217,6 +234,7 @@
           "estado_civil": {
             "title": "Estado civil",
             "type": "string",
+            "default": "4",
             "options": {
               "grid_columns": 6
             },
@@ -263,6 +281,16 @@
                 "estado_civil": [
                   "4"
                 ]
+              },
+              "flatpickr": {
+                "inlineHideInput": true,
+                "wrap": true,
+                "allowInput": true,
+                "altInput": true,
+                "altFormat": "d/m/Y",
+                "minDate": "1900-01",
+                "maxDate": "today",
+                "locale": "pt"
               }
             }
           },
@@ -327,6 +355,20 @@
                 "estado_civil": [
                   "5"
                 ]
+              },
+              "cleave": {
+                "delimiters": [
+                  ".",
+                  ".",
+                  "-"
+                ],
+                "blocks": [
+                  3,
+                  3,
+                  3,
+                  2
+                ],
+                "numericOnly": true
               }
             }
           },
@@ -389,14 +431,14 @@
     "lib_select2": 0,
     "lib_selectize": 0,
     "lib_choices": 0,
-    "lib_flatpickr": 0,
+    "lib_flatpickr": 1,
     "lib_signaturepad": 0,
     "lib_mathjs": 0,
-    "lib_cleavejs": 0,
+    "lib_cleavejs": 1,
     "lib_jquery": 0,
     "lib_dompurify": 1
   },
   "code": "// The following lines are mandatory and readonly. You can add custom code above and below.\nif (jseditor instanceof window.JSONEditor) jseditor.destroy();\njseditor = new window.JSONEditor(document.querySelector(\"#json-editor-form\"), jedata);",
   "style": "h3{\n  font-size: 1rem;\n}\ndiv[data-schemaid=\"root\"]>h3 {\n  /*font-size: 2rem;*/\n  display:none;\n}\ndiv[data-schemaid=\"root\"]>div.card {\n  background: initial !important;\n  border: initial;\n}\ndiv[data-schemaid=\"root\"]>div.card>div>div>div.row>div[data-schematype=\"object\"]>h3 {\n  font-size: 1.5rem;\n}\ndiv[data-schemaid=\"root\"]>div.card>div>div>div.row:not(:first-child)>div[data-schematype=\"object\"] {\n  margin-top: 3rem;\n}",
-  "desc": "Formulário para o Censo Previdênciário de Feira de Santana"
+  "desc": "Add optional description here. (HTML format)"
 }
